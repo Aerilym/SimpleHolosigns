@@ -1,12 +1,13 @@
-name: Holosign
-main: com.aerilym.holosign.HolosignCore
+name: SimpleHolosigns
+main: com.aerilym.simpleholosigns.SimpleHolosignsCore
 author: Aerilym
 description: Create holographic signs using invisible armor stands with simple commands.
+website: https://github.com/Aerilym/SimpleHolosigns
 version: 1.0.0
 api-version: 1.18
 commands:
    holosign:
       description: Use the holosign plugin to create armor stand based signs
-      usage: /<command>
+      usage: "Usage: /<command> [create|delete]"
       aliases: [hsign, hologram, holo, hs]
-      permission: ftscore.holosign
+      permission: SimpleHolosigns.holosign
