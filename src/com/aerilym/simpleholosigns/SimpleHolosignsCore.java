@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class HolosignCore extends JavaPlugin implements Listener{
+public class SimpleHolosignsCore extends JavaPlugin implements Listener{
 	FileConfiguration config = this.getConfig();
 	
     // Fired when plugin is first enabled

@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import net.md_5.bungee.api.ChatColor;
 
-public class CommandHolosign implements CommandExecutor {
+public class CommandHolosign implements CommandExecutor{
 
     // This method is called, when somebody uses our command
 	@Override
@@ -16,12 +16,17 @@ public class CommandHolosign implements CommandExecutor {
             Player player = (Player) sender;
             
             if (args.length == 0) {
+            	player.sendMessage(ChatColor.GOLD + "Simple Holosigns is created by Aerilym - For help & support go to " + ChatColor.AQUA + ChatColor.UNDERLINE + "https://github.com/Aerilym/SimpleHolosigns");
                 player.sendMessage(ChatColor.AQUA + "/holosign" + ChatColor.GOLD + " - Get commands and information. Alias: " + ChatColor.AQUA + "/hs /hsign /hologram /holo");
                 player.sendMessage(ChatColor.WHITE + "/holosign" + ChatColor.AQUA + " create <color> " + ChatColor.GRAY + "[f1] [f2] [f3] [f4]" + ChatColor.AQUA + " <text>" + ChatColor.GOLD + " - Creates a holosign at your location with the text provided, color, and formatting (optional: bold, italic etc.)");
                 player.sendMessage(ChatColor.WHITE + "/holosign" + ChatColor.AQUA + " delete " + ChatColor.GRAY + "[range]" + ChatColor.GOLD + " - Deletes holosigns (armor stands) in a radius around you (default 2)");
                 return true;
             } else {
             	if (args[0].equalsIgnoreCase("create") || args[0].equalsIgnoreCase("c")) {
+            		if (args.length < 2) {
+            			player.sendMessage(ChatColor.GOLD + "Usage: " + ChatColor.WHITE + "/holosign" + ChatColor.AQUA + " create <color> " + ChatColor.GRAY + "[f1] [f2] [f3] [f4]" + ChatColor.AQUA + " <text>" + ChatColor.GOLD + " - Creates a holosign at your location with the text provided, color, and formatting (optional: bold, italic etc.)");
+            			return true;
+            		}
             		String color = args[1].toLowerCase();
             		args[0] = "";
             		args[1] = "";
@@ -63,8 +68,16 @@ public class CommandHolosign implements CommandExecutor {
             		return true;
             	}
             	if (args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("d") || args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("r")) {
-            		int range = Integer.parseInt("1");
+            		
+            		if (args.length < 2) {
+            			player.sendMessage(ChatColor.GOLD + "Usage: " + ChatColor.WHITE + "/holosign" + ChatColor.AQUA + " delete " + ChatColor.GRAY + "[range]" + ChatColor.GOLD + " - Deletes holosigns (armor stands) in a radius around you (default 2)");
+            			return true;
+            		}
+            		
+            		int range = 1;
+            		         		
             		int max_range = 5;
+            		
             		if (args.length > 1) {
             			range = Integer.parseInt(args[1]);
             		}
