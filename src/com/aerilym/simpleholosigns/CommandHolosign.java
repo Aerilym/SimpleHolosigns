@@ -30,65 +30,25 @@ public class CommandHolosign implements CommandExecutor {
             		String obfuscatedstate = "";
             		String strikestate = "";
             		
-            		if (args[2].equalsIgnoreCase("bold")) {
-            			boldstate = ",`bold`:`true`".replace('`', '"');
-            			args[2] = "";
-            		} else if (args[2].equalsIgnoreCase("italic")) {
-            			italicstate = ",`italic`:`true`".replace('`', '"');
-            			args[2] = "";
-            		} else if (args[2].equalsIgnoreCase("obfuscated")) {
-            			obfuscatedstate = ",`obfuscated`:`true`".replace('`', '"');
-            			args[2] = "";
-            		} else if (args[2].equalsIgnoreCase("strikethrough")) {
-            			strikestate = ",`strikethrough`:`true`".replace('`', '"');
-            			args[2] = "";
-            		}
+            		String boldstatetrue = ",`bold`:`true`".replace('`', '"');
+            		String italicstatetrue = ",`italic`:`true`".replace('`', '"');
+            		String obfuscatedstatetrue = ",`obfuscated`:`true`".replace('`', '"');
+            		String strikestatetrue = ",`strikethrough`:`true`".replace('`', '"');
             		
-            		if (args.length > 3) {
-                		if (args[3].equalsIgnoreCase("bold")) {
-                			boldstate = ",`bold`:`true`".replace('`', '"');
-                			args[3] = "";
-                		} else if (args[3].equalsIgnoreCase("italic")) {
-                			italicstate = ",`italic`:`true`".replace('`', '"');
-                			args[3] = "";
-                		} else if (args[3].equalsIgnoreCase("obfuscated")) {
-                			obfuscatedstate = ",`obfuscated`:`true`".replace('`', '"');
-                			args[3] = "";
-                		} else if (args[3].equalsIgnoreCase("strikethrough")) {
-                			strikestate = ",`strikethrough`:`true`".replace('`', '"');
-                			args[3] = "";
-                		}
-            		}
-            		
-            		if (args.length > 4) {
-                		if (args[4].equalsIgnoreCase("bold")) {
-                			boldstate = ",`bold`:`true`".replace('`', '"');
-                			args[4] = "";
-                		} else if (args[4].equalsIgnoreCase("italic")) {
-                			italicstate = ",`italic`:`true`".replace('`', '"');
-                			args[4] = "";
-                		} else if (args[4].equalsIgnoreCase("obfuscated")) {
-                			obfuscatedstate = ",`obfuscated`:`true`".replace('`', '"');
-                			args[4] = "";
-                		} else if (args[4].equalsIgnoreCase("strikethrough")) {
-                			strikestate = ",`strikethrough`:`true`".replace('`', '"');
-                			args[4] = "";
-                		}
-            		}
-            		
-            		if (args.length > 5) {
-                		if (args[5].equalsIgnoreCase("bold")) {
-                			boldstate = ",`bold`:`true`".replace('`', '"');
-                			args[5] = "";
-                		} else if (args[5].equalsIgnoreCase("italic")) {
-                			italicstate = ",`italic`:`true`".replace('`', '"');
-                			args[5] = "";
-                		} else if (args[5].equalsIgnoreCase("obfuscated")) {
-                			obfuscatedstate = ",`obfuscated`:`true`".replace('`', '"');
-                			args[5] = "";
-                		} else if (args[5].equalsIgnoreCase("strikethrough")) {
-                			strikestate = ",`strikethrough`:`true`".replace('`', '"');
-                			args[5] = "";
+            		int formatchecklength = Integer.min(5, args.length);
+            		for (int i = 2; i < formatchecklength; i++) {
+                		if (args[i].equalsIgnoreCase("bold")) {
+                			boldstate = boldstatetrue;
+                			args[i] = "";
+                		} else if (args[i].equalsIgnoreCase("italic")) {
+                			italicstate = italicstatetrue;
+                			args[i] = "";
+                		} else if (args[i].equalsIgnoreCase("obfuscated")) {
+                			obfuscatedstate = obfuscatedstatetrue;
+                			args[i] = "";
+                		} else if (args[i].equalsIgnoreCase("strikethrough")) {
+                			strikestate = strikestatetrue;
+                			args[i] = "";
                 		}
             		}
             		
