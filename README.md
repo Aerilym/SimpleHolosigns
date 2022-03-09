@@ -2,6 +2,7 @@
 
 Create holographic signs using invisible armor stands with simple commands.
 
+![Main image](/images/hs1.png)
 ## Why does this exist?
 
 1. Copy pasting the long command and editing it in Minecraft's chat was annoying.
