@@ -43,17 +43,25 @@ public class CommandHolosign implements CommandExecutor{
             		int formatchecklength = Integer.min(5, args.length);
             		for (int i = 2; i < formatchecklength; i++) {
                 		if (args[i].equalsIgnoreCase("bold")) {
-                			boldstate = boldstatetrue;
-                			args[i] = "";
+                			if (!boldstate.equalsIgnoreCase(boldstatetrue)) {
+                    			boldstate = boldstatetrue;
+                    			args[i] = "";
+                			}
                 		} else if (args[i].equalsIgnoreCase("italic")) {
-                			italicstate = italicstatetrue;
-                			args[i] = "";
+                			if (!italicstate.equalsIgnoreCase(italicstatetrue)) {
+	                			italicstate = italicstatetrue;
+	                			args[i] = "";
+                			}
                 		} else if (args[i].equalsIgnoreCase("obfuscated")) {
-                			obfuscatedstate = obfuscatedstatetrue;
-                			args[i] = "";
+                			if (!obfuscatedstate.equalsIgnoreCase(obfuscatedstatetrue)) {
+	                			obfuscatedstate = obfuscatedstatetrue;
+	                			args[i] = "";
+                			}
                 		} else if (args[i].equalsIgnoreCase("strikethrough")) {
-                			strikestate = strikestatetrue;
-                			args[i] = "";
+                			if (!strikestate.equalsIgnoreCase(strikestatetrue)) {
+                    			strikestate = strikestatetrue;
+                    			args[i] = "";
+                			}
                 		}
             		}
             		
