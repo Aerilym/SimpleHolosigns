@@ -22,6 +22,10 @@ public class SimpleHolosignsCore extends JavaPlugin implements Listener{
     	this.getCommand("holosign").setTabCompleter(new HolosignTab());
     	
     	getServer().getPluginManager().registerEvents(this, this);
+        int pluginId = 14586;
+        Metrics metrics = new Metrics(this, pluginId);
+        
+        metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
     }
     // Fired when plugin is disabled
     @Override
