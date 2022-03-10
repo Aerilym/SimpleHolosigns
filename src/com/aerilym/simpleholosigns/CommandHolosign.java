@@ -68,18 +68,20 @@ public class CommandHolosign implements CommandExecutor{
             		return true;
             	}
             	if (args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("d") || args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("r")) {
-            		
-            		if (args.length < 2) {
-            			player.sendMessage(ChatColor.GOLD + "Usage: " + ChatColor.WHITE + "/holosign" + ChatColor.AQUA + " delete " + ChatColor.GRAY + "[range]" + ChatColor.GOLD + " - Deletes holosigns (armor stands) in a radius around you (default 2)");
-            			return true;
-            		}
-            		
+            		int deleterangedefault = 1; /*to be replaced with a config variable*/
+            		            		
             		int range = 1;
             		         		
             		int max_range = 5;
             		
             		if (args.length > 1) {
             			range = Integer.parseInt(args[1]);
+            		}
+            		
+            		if (args.length < 2) {
+            			player.sendMessage(ChatColor.GOLD + "Deleting armor stands (holosigns) in a " + deleterangedefault + " block radius - you can specify a custom radius.");
+            		} else {
+            			player.sendMessage(ChatColor.GOLD + "Deleting armor stands (holosigns) in a " + range + " block radius.");
             		}
             		
             		if (range > 5) {
