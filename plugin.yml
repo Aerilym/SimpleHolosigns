@@ -3,7 +3,7 @@ main: com.aerilym.simpleholosigns.SimpleHolosignsCore
 author: Aerilym
 description: Create holographic signs using invisible armor stands with simple commands.
 website: https://github.com/Aerilym/SimpleHolosigns
-version: 1.0.0
+version: 1.0.2
 api-version: 1.18
 commands:
    holosign:
