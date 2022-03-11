@@ -35,6 +35,7 @@ public class HolosignTab implements TabCompleter {
 			arguments2.add("dark_purple");
 			arguments2.add("gold");
 			arguments2.add("gray");
+			arguments2.add("green");
 			arguments2.add("dark_gray");
 			arguments2.add("blue");
 			arguments2.add("aqua");
