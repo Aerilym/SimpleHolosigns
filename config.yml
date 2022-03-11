@@ -1,0 +1,7 @@
+JoinMessageTutorial: true
+MaxSignDeleteRangeBeforeWarning: 5
+
+commandHolosign:  
+  delete:
+    deleteMaxRangeBeforeWarning: 5
+    deleteDefaultRange: 2

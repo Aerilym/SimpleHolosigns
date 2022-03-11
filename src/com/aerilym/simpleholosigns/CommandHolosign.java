@@ -4,15 +4,26 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import net.md_5.bungee.api.ChatColor;
 
 public class CommandHolosign implements CommandExecutor{
+	
+	SimpleHolosignsCore plugin;
+	
+    public CommandHolosign(SimpleHolosignsCore plugin) {
+        this.plugin = plugin;
+    }
 
     // This method is called, when somebody uses our command
 	@Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		
         if (sender instanceof Player) {
+        	
+        	FileConfiguration config = plugin.getConfig();
+        	
             Player player = (Player) sender;
             
             if (args.length == 0) {
@@ -76,23 +87,21 @@ public class CommandHolosign implements CommandExecutor{
             		return true;
             	}
             	if (args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("d") || args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("r")) {
-            		int deleterangedefault = 1; /*to be replaced with a config variable*/
-            		            		
-            		int range = 1;
-            		         		
-            		int max_range = 5;
+
+            		int max_range = config.getInt("commandHolosign.delete.deleteMaxRangeBeforeWarning");
+            		int range = config.getInt("commandHolosign.delete.deleteDefaultRange");
             		
             		if (args.length > 1) {
             			range = Integer.parseInt(args[1]);
             		}
             		
             		if (args.length < 2) {
-            			player.sendMessage(ChatColor.GOLD + "Deleting armor stands (holosigns) in a " + deleterangedefault + " block radius - you can specify a custom radius.");
+            			player.sendMessage(ChatColor.GOLD + "Deleting armor stands (holosigns) in a " + range + " block radius - you can specify a custom radius.");
             		} else {
             			player.sendMessage(ChatColor.GOLD + "Deleting armor stands (holosigns) in a " + range + " block radius.");
             		}
             		
-            		if (range > 5) {
+            		if (range > max_range) {
             			if (args.length > 2) {
             				if (args[2].equalsIgnoreCase("confirm")) {
                         		Bukkit.dispatchCommand(sender,"minecraft:kill @e[type=armor_stand,distance=.."+ range +"]");

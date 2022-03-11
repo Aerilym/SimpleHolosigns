@@ -8,17 +8,16 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SimpleHolosignsCore extends JavaPlugin implements Listener{
-	FileConfiguration config = this.getConfig();
+	
+	FileConfiguration config = getConfig();
 	
     // Fired when plugin is first enabled
     @Override
     public void onEnable() {
-        config.addDefault("JoinMessageTutorial", true);
-        config.addDefault("MaxSignDeleteRangeBeforeWarning", 5);
-        config.options().copyDefaults(true);
-        saveConfig();
     	
-    	this.getCommand("holosign").setExecutor(new CommandHolosign());
+    	saveDefaultConfig();
+
+    	this.getCommand("holosign").setExecutor(new CommandHolosign(this));
     	this.getCommand("holosign").setTabCompleter(new HolosignTab());
     	
     	getServer().getPluginManager().registerEvents(this, this);
@@ -41,6 +40,7 @@ public class SimpleHolosignsCore extends JavaPlugin implements Listener{
         if (config.getBoolean("JoinMessageTutorial")) {
             player.sendMessage("To create an armor stand holosign start by typing /holosign. You can disable this message in the config");
         }
+
     }
 
 }
